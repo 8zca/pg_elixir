@@ -1,7 +1,8 @@
 defmodule Issues.CLI do
+  import Issues.TableFormatter
   @default_count 4
 
-  def run(argv) do
+  def main(argv) do
     argv
     |> parse_args
     |> process
@@ -31,6 +32,7 @@ defmodule Issues.CLI do
     |> convert_list
     |> sort_list
     |> Enum.take(count)
+    |> print_table_for_columns(["number", "created_at", "title"])
   end
 
   def decode_response({ :ok, body }) do
@@ -44,9 +46,6 @@ defmodule Issues.CLI do
   end
 
   def convert_list(list) do
-    IO.puts "-----"
-    IO.inspect(list)
-    IO.puts "----"
     list
     |> Enum.map(&Enum.into(&1, Map.new))
   end
