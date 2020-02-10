@@ -1,5 +1,6 @@
 defmodule Issues.CLI do
-  import Issues.TableFormatter
+  alias Issues.TableFormatter, as: TF
+
   @default_count 4
 
   def main(argv) do
@@ -32,7 +33,7 @@ defmodule Issues.CLI do
     |> convert_list
     |> sort_list
     |> Enum.take(count)
-    |> print_table_for_columns(["number", "created_at", "title"])
+    |> TF.print_table_for_columns(["number", "created_at", "title"])
   end
 
   def decode_response({ :ok, body }) do
