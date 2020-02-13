@@ -27,3 +27,4 @@ defmodule Chain do
 end
 
 Chain.run(10)
+Chain.run(10_000)
