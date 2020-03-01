@@ -1,37 +1,39 @@
 defmodule Stack2.Server do
   use GenServer
 
-  def start_link(stash_pid) do
-    { :ok, _pid } = GenServer.start_link(__MODULE__, stash_pid, name: __MODULE__)
+  @me __MODULE__
+
+  def start_link(_) do
+    IO.puts(@me)
+    GenServer.start_link(@me, nil, name: @me)
   end
 
   def pop do
-    GenServer.call(__MODULE__, :pop)
+    GenServer.call(@me, :pop)
   end
 
   def push(value) do
-    GenServer.cast(__MODULE__, { :push, value })
+    GenServer.cast(@me, { :push, value })
   end
 
   # GenServerコールバック
 
-  def init(stash_pid) do
-    list = Stack2.Stash.get_value(stash_pid)
-    { :ok, { list, stash_pid } }
+  def init(_) do
+    { :ok, Stack2.Stash.get() }
   end
 
   # POP
-  def handle_call(:pop, _from, { list, stash_pid }) do
+  def handle_call(:pop, _from, list) do
     [head | tail] = list
-    { :reply, head, { tail, stash_pid } }
+    { :reply, head, tail }
   end
 
   # PUSH
-  def handle_cast({ :push, value }, { list, stash_pid }) do
-    { :noreply, { [value | list], stash_pid } }
+  def handle_cast({ :push, value }, list) do
+    { :noreply, [value | list] }
   end
 
-  def terminate(_reason, { list, stash_pid }) do
-    Stack2.Stash.save_value(stash_pid, list)
+  def terminate(_reason, list) do
+    Stack2.Stash.update(list)
   end
 end

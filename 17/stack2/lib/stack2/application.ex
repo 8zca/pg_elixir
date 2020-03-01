@@ -12,6 +12,11 @@ defmodule Stack2.Application do
     # スーパバイザを起動
     # start_linkは自前のメソッド
     IO.puts("start")
-    { :ok, _pid } = Stack2.Supervisor.start_link([5, "cat", 9])
+    children = [
+      { Stack2.Stash, [5, "cat", 9] },
+      { Stack2.Server, nil }
+    ]
+    opts = [strategy: :one_for_one, name: Stack2.Supervisor]
+    Supervisor.start_link(children, opts)
   end
 end
