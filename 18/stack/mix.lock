@@ -1,0 +1,11 @@
+%{
+  "artificery": {:hex, :artificery, "0.4.2", "3ded6e29e13113af52811c72f414d1e88f711410cac1b619ab3a2666bbd7efd4", [:mix], [], "hexpm"},
+  "bbmustache": {:hex, :bbmustache, "1.8.1", "22af8ad50383b7022066c246486aaf2db980e3883c6c620600e9299caa420c10", [:rebar3], [], "hexpm"},
+  "cf": {:hex, :cf, "0.3.1", "5cb902239476e141ea70a740340233782d363a31eea8ad37049561542e6cd641", [:rebar3], [], "hexpm"},
+  "distillery": {:hex, :distillery, "2.1.1", "f9332afc2eec8a1a2b86f22429e068ef35f84a93ea1718265e740d90dd367814", [:mix], [{:artificery, "~> 0.2", [hex: :artificery, repo: "hexpm", optional: false]}], "hexpm"},
+  "erlware_commons": {:hex, :erlware_commons, "1.3.1", "0ce192ad69bc6fd0880246d852d0ece17631e234878011d1586e053641ed4c04", [:rebar3], [{:cf, "~>0.3", [hex: :cf, repo: "hexpm", optional: false]}], "hexpm"},
+  "exrm": {:hex, :exrm, "1.0.8", "5aa8990cdfe300282828b02cefdc339e235f7916388ce99f9a1f926a9271a45d", [:mix], [{:relx, "~> 3.5", [hex: :relx, repo: "hexpm", optional: false]}], "hexpm"},
+  "getopt": {:hex, :getopt, "1.0.1", "c73a9fa687b217f2ff79f68a3b637711bb1936e712b521d8ce466b29cbf7808a", [:rebar3], [], "hexpm"},
+  "providers": {:hex, :providers, "1.8.1", "70b4197869514344a8a60e2b2a4ef41ca03def43cfb1712ecf076a0f3c62f083", [:rebar3], [{:getopt, "1.0.1", [hex: :getopt, repo: "hexpm", optional: false]}], "hexpm"},
+  "relx": {:hex, :relx, "3.33.0", "afc019320bb69881718576b3e4e1eb548c1fa3270717ba66a78004c98a77cd17", [:rebar3], [{:bbmustache, "~>1.5", [hex: :bbmustache, repo: "hexpm", optional: false]}, {:cf, "~>0.3", [hex: :cf, repo: "hexpm", optional: false]}, {:erlware_commons, "~>1.2", [hex: :erlware_commons, repo: "hexpm", optional: false]}, {:getopt, "~>1.0", [hex: :getopt, repo: "hexpm", optional: false]}, {:providers, "~>1.8", [hex: :providers, repo: "hexpm", optional: false]}], "hexpm"},
+}

@@ -2,6 +2,7 @@ defmodule Stack.Server do
   use GenServer
 
   @me __MODULE__
+  @ver 0
 
   def start_link(_) do
     IO.puts(@me)
